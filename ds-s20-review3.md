@@ -2,7 +2,7 @@
 
    1. What do you need to include in order to use a vector?
    
-   #include <vector>
+   `#include <vector>`
 
 ```
 std::vector<char> v1,
@@ -25,101 +25,103 @@ std::vector<char> v1,
 
       a) an empty vector 
       
-      vector<int> v1;
+      `vector<int> v1;`
 
       b) a vector containing 8 copies of the element `3` (using the fill constructor)
       
-      vector<int> v2(8, 3);
+      `vector<int> v2(8, 3);`
 
       c) a vector containing the elements `{7, 1, 8, 9, 5, 1, 5, 0, 0, 0}` (using the initializer list constructor)
       
-      vector<int> v3 {7, 1, 8, 9, 5, 1, 5, 0, 0, 0};
+      `vector<int> v3 {7, 1, 8, 9, 5, 1, 5, 0, 0, 0};`
 
       d) a vector containing the first three elements of another vector called `v3` (using the range constructor)
       
-      vector<int> v4(v3.begin(), v3.begin()+3);
+      `vector<int> v4(v3.begin(), v3.begin()+3);`
 
    4. What is the output of the following statements?
 
       a) `std::cout << v3.at(2);`
       
-      8
+      `8`
 
       b) `std::cout << v3[1];`
       
-      1
+      `1`
 
       c) `std::cout << v3.front();`
       
-      7
+      `7`
 
       d) `std::cout << v3.back();`
       
-      0
+      `0`
 
    5. Write code using vector methods (not iterators) to produce the following outputs:
 
       a) print the first element of `v3`
       
-      cout << v3.front() << v3[0] << v3.at(0);
+      `cout << v3.front() << v3[0] << v3.at(0);`
 
       b) print the last element of `v3`
       
-      cout << v3.back() << v3[v3.size()-1] << v3.at(v3.size()-1);
+      `cout << v3.back() << v3[v3.size()-1] << v3.at(v3.size()-1);`
 
       c) print the fourth element of `v3`
       
-      cout << v3[3];
+      `cout << v3[3];`
 
       d) print the second element of `v3`
       
-      cout << v3[1];
+      `cout << v3[1];`
 
    6. Write code to fill `v1` with the elements `{2, 4, 6, 8, 10}`.
    
-   for (int i = 1; i <= 5; i++) v1.push_back(i*2);  // v1.insert(v1.end()-1, i*2);
+   `for (int i = 1; i <= 5; i++) v1.push_back(i*2);  // v1.insert(v1.end()-1, i*2);`
 
    7. Write code to print out each element of `v1`.
    
+   ```
    for (int i = 0; i < v1.size(); i++) cout << v1[i];		// or v1.at(i);
    for (auto elt : v) cout << elt;
    for (auto it = v.begin(); it != v.end(); ++it) cout << *it;
+   ```
 
    8. What are the contents of `v1` after each of the following statements? (assuming it contains 2 4 6 8 10)
       a) `v1.push_back(11);`
       
-      2 4 6 8 10 11
+      `2 4 6 8 10 11`
 
       b) `v1.insert(v1.begin()+2, 5);`
       
-      2 4 5 6 8 10 11   
+      `2 4 5 6 8 10 11 `  
 
       c) `v1.pop_back();`
       
-      2 4 5 6 8 10  
+      `2 4 5 6 8 10 ` 
 
       d) `v1.erase(v1.end()-2);`
       
-      2 4 5 6 10  
+      `2 4 5 6 10`  
 
    9. Write code to
 
       a) add `9` to the end of `v1`
       
-      v1.push_back(9);
+      `v1.push_back(9);`
 
       b) add `3` as the second element of `v1`
       
-      v1.insert(v1.begin()+1, 3)
+      `v1.insert(v1.begin()+1, 3)`
 
       c) remove the last element of `v1`
       
-      v1.pop_back();
+      `v1.pop_back();`
 
       d) remove `3` from `v1`
       
-      v1.erase(v1.begin()+1);
-      // if you didn't know where 3 is: v1.erase(std::find(v1.begin(), v1.end(), 3))
+      `v1.erase(v1.begin()+1);`
+      `// if you didn't know where 3 is: v1.erase(std::find(v1.begin(), v1.end(), 3))`
 
    10. Which vector methods should you avoid using?
    
@@ -130,39 +132,46 @@ std::vector<char> v1,
 
    11. What two access methods does vector have that list does not? Why?
    
-   at(), [].       because vectors support random access and lists do not.
+   `at(), [].       because vectors support random access and lists do not.`
 
    12. What two modifier methods does std::list have that vector does not? Why?
    
-   push_front, pop_front.    
+   `push_front, pop_front.    `
    because operations at the beginning of the list are very expensive for vectors, not for lists
 
    13. Most questions that were asked for `vector` can also be asked for `list`.
 
 # Stacks, Queues, Priority Queues
 
+   ```	
    #include <stack>
 	
    #include <queue>	// also contains priority queue
+   ```
 
    14. Create an empty `{stack, queue, priority queue}` of `ints`.
    
+   ```
    stack<int> s;
 	
    queue<int> q;
 	
    priority_queue<int> pq;
+   ```
 
    15. Fill the `{stack, queue, priority queue}` with the elements `{1, 2, 3, 4, 5}`.
-   
+
+   ```
    for (int i = 1; i <= 5; i++) {
    	s.push(i);
 	q.push(i);
 	pq.push(i);
    }
+   ```
 
    16. Print each element of the `{stack, queue, priority queue}`. What is the output?
    
+   ```
    while (!s.is_empty()) {
    	cout << s.top();
 	s.pop();
@@ -173,6 +182,7 @@ std::vector<char> v1,
 	cout << pq.top();
 	pq.pop();
    }
+   ```
    
    5 1 5
    4 2 4
@@ -185,29 +195,35 @@ std::vector<char> v1,
 
    17. What do you need to include in order to use algorithms from the standard library?
    
-   #include <algorithm>
+   `#include <algorithm>`
 
    18. Write code using methods from `std::algorithm` to
 
       a) reverse the second half of a vector 
       
+      ```
       std::reverse(v.begin()+(v.size()/2), v.end());
       std::reverse(v.begin()+((v.end()-v.begin())/2), v.end());
+      ```
 
       b) sort a vector
       
-      std::sort(v.begin(), v.end())
+      `std::sort(v.begin(), v.end())`
 
       c) reverse sort a vector
       
+      ```
       std::reverse(std::sort(v.begin(), v.end()));
       std::sort(v.rbegin(), v.rend());
+      ```
 
       d) find the element `5` in a list and replace it with the value `4`
       
+      ```
       std::list<int>::iterator it = std::find(lst.begin(), lst.end(), 5);
       // auto it = std::find(lst.begin(), lst.end(), 5);
       *it = 4;
+      ```
       
       (e) note: see for_each, count_if (for your own interest)
 
@@ -246,18 +262,20 @@ std::vector<char> v1,
 
    22. Use an iterator to print out the third element in a vector `v`.
    
-   cout << *(v.begin()+2);
+   `cout << *(v.begin()+2);`
 
    23. Use an iterator to increment the first element in a vector `v`.
    
-   (*v.begin())++;
+   `(*v.begin())++;`
 
    24. Use iterators and `std::find` to print out how many elements apart `d` and `e` are in vector `v`.
    
+   ```
    auto dit = std::find(v.begin(), v.end(), 'd'),
    	eit = std::find(v.begin(), v.end(), 'e');
    int howManyEltsApart = dit - eit;
    if (howManyEltsApart < 0) howManyEltsApart *= -1;
+   ```
 
    25. Use iterators and `std::find` to print out whether element `d` comes before element `e` in vector `v`.
    
@@ -285,15 +303,15 @@ std::vector<char> v1,
 
    30. Declare a map `m` with a key type of `int` and a value type of `string`.
    
-   std::map<int, std::string> m;
+   `std::map<int, std::string> m;`
 
    31. `auto p = *(m.begin());`   What is the type of `p`? (referring to m in question 30)
    
-   std::pair<int, std::string>
+   `std::pair<int, std::string>`
 
    32. Use `p` to print out `m`\'s first key and value.
    
-   cout << p.first << " " << p.second << endl;
+   `cout << p.first << " " << p.second << endl;`
 
    33. Suppose `m` has the following contents: 
 
@@ -318,7 +336,7 @@ std::vector<char> v1,
 
    35. Write code to erase `3` from the map.
    
-   m.erase(3);
+   `m.erase(3);`
    // note that erase can also take an iterator: m.erase(m.find(3));
 
    36. Write code to determine if `8` is in the map, and, if it is, update its value to `Stuart`. If it is not yet in the map, insert it with a value of `Brenda`.
@@ -390,35 +408,35 @@ std::vector<char> v1,
 
       a) include the header file necessary for smart pointers
       
-      #include <memory>
+      `#include <memory>`
 
       b) declare a `shared_ptr` called `p1` pointing to a new `string` "hello"
       
-      shared_ptr<string> p1(new string("hello"));
+      `shared_ptr<string> p1(new string("hello"));`
 
       c) declare a `shared_ptr` called `p2` pointing to the same `string`
       
-      shared_ptr<string> p2 = p1;
+      `shared_ptr<string> p2 = p1;`
 
       d) print `p1`'s string to the console
       
-      cout << *p1;
+      `cout << *p1;`
 
       e) print the length of `p1`'s string to the console
       
-      cout << p1->length();
+      `cout << p1->length();`
 
       f) empty `p1`
       
-      p1.reset();
+      `p1.reset();`
 
       g) declare a `weak_ptr` called `w1` pointing to the same `string` as `p2`
       
-      weak_ptr<string> w1 = p2;
+      `weak_ptr<string> w1 = p2;`
 
       h) declare a `unique_ptr` called `u1` pointing to a new string "goodbye"
       
-      unique_ptr<string> u1(new string("goodbye"));
+      `unique_ptr<string> u1(new string("goodbye"));`
 
    41. When will "hello"'s memory be freed?
    
@@ -431,4 +449,4 @@ std::vector<char> v1,
    43. What error will you get from the statement `auto u2 = u1`? How can you assign `u1`'s pointer to `u2`?
    
    That you're trying to call unique_ptr's implicitly deleted copy constructor
-   auto u2 = std::move(u1);
+   `auto u2 = std::move(u1);`
